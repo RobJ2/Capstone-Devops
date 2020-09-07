@@ -28,6 +28,15 @@ pipeline {
                 }
             }
         }
+        stage("Cleaning Docker up") {
+            steps {
+                script {
+                    sh "echo 'Cleaning Docker up'"
+                    sh "docker system prune -f"
+                    }
+                }
+            }
+        }
         stage('Create K8s Cluster') {
             steps {
                 withAWS(region:'eu-central-1', credentials:'credentials'){
@@ -54,16 +63,10 @@ pipeline {
 					sh '''
 						aws eks --region eu-central-1 update-kubeconfig --name capstonecluster
 					'''
-				}
 			}
 		}
-        stage("Cleaning Docker up") {
-            steps {
-                script {
-                    sh "echo 'Cleaning Docker up'"
-                    sh "docker system prune -f"
-                }
-            }
+	}
+
         }
       }
   }
