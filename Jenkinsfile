@@ -28,7 +28,7 @@ pipeline {
                 }
             }
         }
-        stage("Create K8s Cluster") {
+        stage('Create K8s Cluster') {
             steps {
                 withAWS(region:'eu-central-1', credentials:'credentials'){
                     sh '''
@@ -44,9 +44,19 @@ pipeline {
                             --zones eu-central-1a \
 						    --zones eu-central-1b \
 						    --zones eu-central-1c \
+                        '''
             }
         }
     }
+    	stage('Create config file cluster') {
+			steps {
+				withAWS(region:'eu-central-1', credentials:'credentials') {
+					sh '''
+						aws eks --region eu-central-1 update-kubeconfig --name capstonecluster
+					'''
+				}
+			}
+		}
         stage("Cleaning Docker up") {
             steps {
                 script {
