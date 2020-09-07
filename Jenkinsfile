@@ -28,7 +28,7 @@ pipeline {
                 }
             }
         }
-        stage("Cleaning Docker up") {
+        stage('Cleaning Docker up') {
             steps {
                 script {
                     sh "echo 'Cleaning Docker up'"
