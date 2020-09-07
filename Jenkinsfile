@@ -3,13 +3,8 @@ pipeline {
     registry = "04193007/capstone"
     registryCredential = 'dockerhub'
     dockerImage = ''
-
+}
 	agent any
-	environment {
-		registry = "04193007/capstone"
-		registryCredential = 'dockerhub'
-	}
-	
 	stages {
 		stage('Lint HTML'){
 			steps {
@@ -17,14 +12,14 @@ pipeline {
 				
 			}
 		}
-    stage('Build Docker Container') {
-      steps {
-        script {
-          dockerImage = docker.build(registry)
-        }
+        stage('Build Docker Container') {
+            steps {
+                    script {
+              dockerImage = docker.build(registry)
+            }
       }
     }
-    stage('Build & Push to dockerhub') {
+        stage('Build & Push to dockerhub') {
             steps {
                 script {
                     docker.withRegistry('', registryCredential) {
@@ -33,7 +28,7 @@ pipeline {
                 }
             }
         }
-    stage("Cleaning Docker up") {
+        stage("Cleaning Docker up") {
             steps {
                 script {
                     sh "echo 'Cleaning Docker up'"
@@ -43,4 +38,4 @@ pipeline {
         }
       }
   }
-  }
+ 
