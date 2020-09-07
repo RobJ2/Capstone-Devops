@@ -1,7 +1,7 @@
 pipeline {
   environment {
     registry = "04193007/capstone"
-    registryCredential = 'dockerhub'
+    registryCredential = 'Dockerhub'
     dockerImage = ''
 }
 	agent any
@@ -21,8 +21,8 @@ pipeline {
     }
         stage('Build & Push to dockerhub') {
             steps {
-                script {
-                    docker.withRegistry('', registryCredential) {
+                    script {
+                docker.withRegistry('', registryCredential) {
                         dockerImage.push()
                     }
                 }
