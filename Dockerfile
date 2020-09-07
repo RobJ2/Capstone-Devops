@@ -3,9 +3,8 @@ FROM nginx:stable
 LABEL maintainer="Rob Jacobs <jacobs.rob60@hotmail.com>"
 MAINTAINER = "jacobs.rob60@hotmail.com"
 
-RUN rm /usr/share/nginx/html/index.html
-COPY html/index.html /usr/share/nginx/html
+COPY index.html /var/www/html/
 
 #EXPOSE 80
 # EXPOSE 800000
-#CMD ["nginx", "-g" , "daemon off;"]
+CMD ["nginx", "-g" , "daemon off;"]
