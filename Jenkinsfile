@@ -85,11 +85,12 @@ pipeline {
 		}
 		stage('Create the service in the cluster, redirect to blue') {
 			steps {
-				withAWS(region:'eu-central-1', credentials:'AWSAdmin
+				withAWS(region:'eu-central-1', credentials:'AWSAdmin') {
 						kubectl apply -f ./blue-service.json
 					'''
 				}
 			}
+		}
 		stage('Waiting for Aproval') {
             steps {
                 input "Route traffic to Green?"
@@ -103,5 +104,6 @@ pipeline {
 					'''
 				}
 			}
+        }
     }
 }
