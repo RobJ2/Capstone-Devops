@@ -14,8 +14,10 @@ pipeline {
 		}
         stage('Build Docker Container') {
             steps {
-                    script {
-              dockerImage = sudo docker.build(registry)
+              withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
+            sudo sh '''
+            sudo docker build -t 04193007/capstone:$BUILD_ID .
+            '''
             }
       }
     }
