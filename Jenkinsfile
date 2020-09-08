@@ -14,10 +14,9 @@ pipeline {
 		}
         stage('Build Docker Container'){
             steps {
-                    script {
+                    script 
               dockerImage = sudo docker.build(registry)
-            }
-      }
+        }
     }
         stage('Build & Push to dockerhub'){
             steps {
