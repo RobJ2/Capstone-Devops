@@ -12,14 +12,14 @@ pipeline {
 				
 			}
 		}
-        stage('Build Docker Container') {
+        stage('Build Docker Container'){
             steps {
                     script {
               dockerImage = sudo docker.build(registry)
             }
       }
     }
-        stage('Build & Push to dockerhub') {
+        stage('Build & Push to dockerhub'){
             steps {
                     script {
                 docker.withRegistry('', registryCredential) {
@@ -28,7 +28,7 @@ pipeline {
                 }
             }
         }
-        stage('Cleaning Docker up') {
+        stage('Cleaning Docker up'){
             steps {
                 script {
                     sh "echo 'Cleaning Docker up'"
