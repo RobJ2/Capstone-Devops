@@ -38,7 +38,7 @@ pipeline {
             }
         stage('Create K8s Cluster') {
             steps {
-                withAWS(region:'eu-central-1', credentials:'AWS Admin'){
+                withAWS(region:'eu-central-1', credentials:'AWSAdmin'){
                     sh '''
                             eksctl create cluster \
                             --name capstonecluster \
@@ -58,7 +58,7 @@ pipeline {
     }
     	stage('Create config file cluster') {
 			steps {
-				withAWS(region:'eu-central-1', credentials:'AWS Admin') {
+				withAWS(region:'eu-central-1', credentials:'AWSAdmin') {
 					sh '''
 						aws eks --region eu-central-1 update-kubeconfig --name capstonecluster
 					'''
