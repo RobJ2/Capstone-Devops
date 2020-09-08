@@ -6,7 +6,7 @@ Run_docker.sh
 
 # Step 1:
 # Build image and add a descriptive tag
-docker build . -t 04193007/capstone
+sudo docker build . -t 04193007/capstone
 
 # Step 2: 
 # List docker images
