@@ -17,7 +17,7 @@ spec:
         app: capstone-project
     spec:
       containers:
-        - name: capstone-project
-          image: 04193007/capstone
+        - name: nginx
+          image: nginx:1.19.2
           ports:
             - containerPort: 80
