@@ -15,7 +15,7 @@ pipeline {
         stage('Build Docker Container') {
             steps {
                     script {
-              dockerImage = docker.build(registry)
+              dockerImage = sudo docker.build(registry)
             }
       }
     }
