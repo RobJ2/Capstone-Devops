@@ -86,6 +86,7 @@ pipeline {
 		stage('Create the service in the cluster, redirect to blue') {
 			steps {
 				withAWS(region:'eu-central-1', credentials:'AWSAdmin') {
+					sh '''				
 						kubectl apply -f ./blue-service.json
 					'''
 				}
