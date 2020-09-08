@@ -15,8 +15,8 @@ pipeline {
         stage('Build Docker Container') {
             steps {
               withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
-            sudo sh '''
-            sudo docker build -t 04193007/capstone:$BUILD_ID .
+            sh '''
+            docker build -t 04193007/capstone:$BUILD_ID .
             '''
             }
       }
