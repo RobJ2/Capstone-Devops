@@ -12,6 +12,12 @@ pipeline {
 				
 			}
 		}
+    stage('Security Scan') {
+              steps { 
+                 aquaMicroscanner imageName: 'nginx:stable', notCompliesCmd: 'exit 1', onDisallowed: 'fail', outputFormat: 'html'
+              }
+         }    		
+		
         stage('Build Docker Container'){
             steps {
                     script {
