@@ -9,3 +9,17 @@ These include:
     •	Working with Ansible and CloudFormation to deploy clusters
     •	Building Kubernetes clusters
     •	Building Docker containers in pipelines
+
+Steps that have been confiured and performed in the Pipeline are as follows:
+
+    •	Lint a basic HTML file
+    •	Build Docker Container
+    •	Build & Push to dockerhub
+    •	Cleaning Docker up
+    •   Create K8s Cluster
+    •   Create config file cluster
+    •   Deploy blue container
+    •   Deploy green container
+    •   Create the service in the cluster, redirect to blue
+    •   Waiting for Aproval
+    •   Route Service to Cluster, redirecting to green
